@@ -1,7 +1,7 @@
 ﻿
 namespace FormUI.Modules
 {
-    partial class StoreModul
+    partial class StoreModule
     {
         /// <summary>
         /// Required designer variable.

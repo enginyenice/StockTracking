@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
-    public partial class UserModul : Form
+    public partial class UserModule : Form
     {
         readonly IUserService userService;
         CreateMessage createMessage;
-        public UserModul()
+        public UserModule()
         {
             createMessage = new CreateMessage();
             userService = InstanceFactory.GetInstance<IUserService>();

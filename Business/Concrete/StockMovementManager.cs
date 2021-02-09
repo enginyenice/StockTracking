@@ -2,6 +2,7 @@
 using Business.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using FluentValidation.Results;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -65,6 +66,11 @@ namespace Business.Concrete
         public List<StockMovement> GetAll()
         {
             return stockMovementDal.GetAll();
+        }
+
+        public List<ProductReportDto> GetReportData()
+        {
+            return stockMovementDal.GetReportData();
         }
 
         public string Update(StockMovement entity)

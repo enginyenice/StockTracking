@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
-    public partial class StoreModul : Form
+    public partial class StoreModule : Form
     {
         IStoreService storeService;
         CreateMessage createMessage;
 
-        public StoreModul()
+        public StoreModule()
         {
             storeService = InstanceFactory.GetInstance<IStoreService>();
             createMessage = new CreateMessage();

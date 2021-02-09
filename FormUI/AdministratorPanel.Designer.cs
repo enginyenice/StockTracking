@@ -54,6 +54,7 @@ namespace FormUI
             this.CustomerModuleBtn.TabIndex = 1;
             this.CustomerModuleBtn.Text = "Müşteri Modülü";
             this.CustomerModuleBtn.UseVisualStyleBackColor = true;
+            this.CustomerModuleBtn.Click += new System.EventHandler(this.CustomerModuleBtn_Click);
             // 
             // SupplierModuleBtn
             // 
@@ -63,6 +64,7 @@ namespace FormUI
             this.SupplierModuleBtn.TabIndex = 2;
             this.SupplierModuleBtn.Text = "Tedarikçi Modülü";
             this.SupplierModuleBtn.UseVisualStyleBackColor = true;
+            this.SupplierModuleBtn.Click += new System.EventHandler(this.SupplierModuleBtn_Click);
             // 
             // StoreModuleBtn
             // 
@@ -72,6 +74,7 @@ namespace FormUI
             this.StoreModuleBtn.TabIndex = 3;
             this.StoreModuleBtn.Text = "Depo Modülü";
             this.StoreModuleBtn.UseVisualStyleBackColor = true;
+            this.StoreModuleBtn.Click += new System.EventHandler(this.StoreModuleBtn_Click);
             // 
             // ReportModuleBtn
             // 
@@ -81,6 +84,7 @@ namespace FormUI
             this.ReportModuleBtn.TabIndex = 4;
             this.ReportModuleBtn.Text = "Rapor Modülü";
             this.ReportModuleBtn.UseVisualStyleBackColor = true;
+            this.ReportModuleBtn.Click += new System.EventHandler(this.ReportModuleBtn_Click);
             // 
             // AdministratorPanel
             // 
@@ -96,6 +100,7 @@ namespace FormUI
             this.Name = "AdministratorPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrator Panel";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdministratorPanel_FormClosing);
             this.Load += new System.EventHandler(this.AdministratorPanel_Load);
             this.ResumeLayout(false);
 

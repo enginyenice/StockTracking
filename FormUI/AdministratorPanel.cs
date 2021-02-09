@@ -26,8 +26,39 @@ namespace FormUI
 
         private void UserModuleBtn_Click(object sender, EventArgs e)
         {
-            UserModul userModul = new UserModul();
-            userModul.Show();
+            UserModule userModul = new UserModule();
+            userModul.ShowDialog();
+        }
+
+        private void CustomerModuleBtn_Click(object sender, EventArgs e)
+        {
+            CustomerModule customerModule = new CustomerModule();
+            customerModule.ShowDialog();
+        }
+
+        private void SupplierModuleBtn_Click(object sender, EventArgs e)
+        {
+            SupplierModule supplierModule = new SupplierModule();
+            supplierModule.ShowDialog();
+        }
+
+        private void StoreModuleBtn_Click(object sender, EventArgs e)
+        {
+            StoreModule storeModule = new StoreModule();
+            storeModule.ShowDialog();
+        }
+
+        private void ReportModuleBtn_Click(object sender, EventArgs e)
+        {
+            ReportingModule reportingModule = new ReportingModule();
+            reportingModule.ShowDialog();
+        }
+
+        private void AdministratorPanel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Login login = new Login();
+            this.Close();
+            login.Show();
         }
     }
 }
