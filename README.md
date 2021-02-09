@@ -32,11 +32,11 @@ Tedarikçi tanımlanırken istenen bilgiler;
 -Tedarikçi numarası, Tedarikçi Firma Adı, E-mail, telefon.
 
 #### :x: Depo Modülü
-Depo ekle/sil/güncelle işlemlerinin yapılması.
+:heavy_check_mark: Depo ekle/sil/güncelle işlemlerinin yapılması.
 
-Depolar arası transfer ( A deposundan B deposuna ürün aktarımı)
+:x: Depolar arası transfer ( A deposundan B deposuna ürün aktarımı)
 
-Depoda bulunan stok sayısına göre yöneticinin uyarılması.
+:x: Depoda bulunan stok sayısına göre yöneticinin uyarılması.
 
 Örnek: Depoda bulunan bir malın sayısı (Ürün tanımlanırken kritik stok sayısı olarak belirtiyoruz) 20’nin altına düştüğünde yöneticiye stok durumu hk. uyarı vermesi gerekmektedir.
 
@@ -56,7 +56,7 @@ Gün içerisinde müşterilere satılan ürünler ve fiyat bilgileri, tedarikçi
 
 
 ### 2) Kullanıcı Arayüzü:
-#### :x: Ürün Modülü
+#### :heavy_check_mark: Ürün Modülü
 
 Ürün ekle/sil/güncelle işlemlerinin yapılması.
 
