@@ -29,7 +29,7 @@ Tedarikçi ekle/sil/güncelle işlemlerinin yapılması.
 
 Tedarikçi tanımlanırken istenen bilgiler;
 
--Tedarikçi numarası, Tedarikçi Firma Adı, E-mail, telefon.
+- Tedarikçi numarası, Tedarikçi Firma Adı, E-mail, telefon.
 
 #### :x: Depo Modülü
 :heavy_check_mark: Depo ekle/sil/güncelle işlemlerinin yapılması.
@@ -42,9 +42,9 @@ Tedarikçi tanımlanırken istenen bilgiler;
 
 Depo tanımlanırken istenen bilgiler;
 
--Depo numarası, Depo Adı, Depo Adres, Depo telefon.
+- Depo numarası, Depo Adı, Depo Adres, Depo telefon.
 
-#### :x: Rapor Modülü
+#### :heavy_check_mark: Rapor Modülü
 
 Gün içerisinde müşterilere satılan ürünler ve fiyat bilgileri, tedarikçilerden alınan ürünler ve fiyat bilgileri ve gün sonundaki günlük bakiye raporda gösterilmesi beklenmektedir.
 
@@ -63,13 +63,14 @@ Gün içerisinde müşterilere satılan ürünler ve fiyat bilgileri, tedarikçi
 Ürün tanımlanırken istenen bilgiler;
 
 - Stok Kodu, Cinsi, Birimi, Açıklama, Resim, Kritik Stok Sayısı 
-- 
-#### :x:  Ürün Alış/Satış Modülü
+
+
+#### :heavy_check_mark:  Ürün Alış/Satış Modülü
 
 Alış ve satış modülünü iki farklı arayüz olarak tasarlayınız.
 
-- Ürün Alış Modülü
-- 
+#### :heavy_check_mark: Ürün Alış Modülü
+
 Tedarikçilerden ürün alımının yapılması.
 
 Ürün alışı tanımlanırken istenen bilgiler;
@@ -81,7 +82,7 @@ Toplam Fiyat
 gerekmektedir. (Örnek : A ürünü tedarikçiden satın alınırken kayıt
 edilmesi ve A ürünü için Stok hareketlerine girdi olarak eklenmesi
 gerekmektedir.)
-#### :x: Ürün Satış Modülü
+#### :heavy_check_mark: Ürün Satış Modülü
 Müşteriye ürün satılması. Gelir/Gider tablosuna eklenmesi gerekmektedir.
 Ürün satışı tanımlanırken istenen bilgiler;
 
