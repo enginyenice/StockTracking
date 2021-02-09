@@ -69,7 +69,7 @@ Gün içerisinde müşterilere satılan ürünler ve fiyat bilgileri, tedarikçi
 
 Alış ve satış modülünü iki farklı arayüz olarak tasarlayınız.
 
-- :heavy_check_mark: Ürün Alış Modülü
+#### :heavy_check_mark: Ürün Alış Modülü
 
 Tedarikçilerden ürün alımının yapılması.
 
