@@ -44,7 +44,7 @@ Depo tanımlanırken istenen bilgiler;
 
 - Depo numarası, Depo Adı, Depo Adres, Depo telefon.
 
-#### :x: Rapor Modülü
+#### :heavy_check_mark: Rapor Modülü
 
 Gün içerisinde müşterilere satılan ürünler ve fiyat bilgileri, tedarikçilerden alınan ürünler ve fiyat bilgileri ve gün sonundaki günlük bakiye raporda gösterilmesi beklenmektedir.
 
