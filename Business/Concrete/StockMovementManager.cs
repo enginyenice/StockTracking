@@ -11,24 +11,25 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class StoreManager : IStoreService
+    public class StockMovementManager : IStockMovementService
     {
-        IStoreDal storeDal;
-        StoreValidation validator;
+        IStockMovementDal stockMovementDal;
+        StockMovementValidation validator;
         ValidationResult result;
-        public StoreManager(IStoreDal storeDal)
+
+        public StockMovementManager(IStockMovementDal stockMovementDal)
         {
-            validator = new StoreValidation();
-            this.storeDal = storeDal;
+            this.stockMovementDal = stockMovementDal;
+            validator = new StockMovementValidation();
         }
 
-        public string Add(Store entity)
+        public string Add(StockMovement entity)
         {
+            
             result = validator.Validate(entity);
             if (result.IsValid)
             {
-                
-                storeDal.Add(entity);
+                stockMovementDal.Add(entity);
                 JObject jsonObject = new JObject();
                 jsonObject.Add("Status", "success");
                 jsonObject.Add("ErrorMessage", "Kayıt başarıyla oluşturuldu");
@@ -45,34 +46,35 @@ namespace Business.Concrete
 
         public string Delete(int id)
         {
-            Store deleteStore = storeDal.Get(p => p.Id == id);
-            storeDal.Delete(deleteStore);
+            StockMovement stockMovement = stockMovementDal.Get(p => p.Id == id);
+            stockMovementDal.Delete(stockMovement);
             JObject jsonObject = new JObject();
             jsonObject.Add("Status", "success");
             jsonObject.Add("ErrorMessage", "Kayıt başarıyla silindi.");
             JArray array = new JArray();
             array.Add(jsonObject);
             return JsonConvert.SerializeObject(array);
+
         }
 
-        public Store Get(int id)
+        public StockMovement Get(int id)
         {
-            return storeDal.Get(p => p.Id == id);
+            return stockMovementDal.Get(p => p.Id == id);
         }
 
-        public List<Store> GetAll()
+        public List<StockMovement> GetAll()
         {
-            return storeDal.GetAll();
+            return stockMovementDal.GetAll();
         }
 
-        
-
-        public string Update(Store entity)
+        public string Update(StockMovement entity)
         {
+           
+
             result = validator.Validate(entity);
             if (result.IsValid)
             {
-                storeDal.Update(entity);
+                stockMovementDal.Update(entity);
                 JObject jsonObject = new JObject();
                 jsonObject.Add("Status", "success");
                 jsonObject.Add("ErrorMessage", "Kayıt başarıyla güncellendi");

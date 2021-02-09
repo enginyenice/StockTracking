@@ -11,24 +11,26 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class StoreManager : IStoreService
+    public class ProductInStoreManager : IProductInStoreService
     {
-        IStoreDal storeDal;
-        StoreValidation validator;
+        IProductInStoreDal productInStoreDal;
+        ProductInStoreValidation validator;
         ValidationResult result;
-        public StoreManager(IStoreDal storeDal)
+
+        public ProductInStoreManager(IProductInStoreDal productInStoreDal)
         {
-            validator = new StoreValidation();
-            this.storeDal = storeDal;
+            validator = new ProductInStoreValidation();
+            this.productInStoreDal = productInStoreDal;
         }
 
-        public string Add(Store entity)
+        public string Add(ProductInStore entity)
         {
+           
+
             result = validator.Validate(entity);
             if (result.IsValid)
             {
-                
-                storeDal.Add(entity);
+                productInStoreDal.Add(entity);
                 JObject jsonObject = new JObject();
                 jsonObject.Add("Status", "success");
                 jsonObject.Add("ErrorMessage", "Kayıt başarıyla oluşturuldu");
@@ -45,34 +47,46 @@ namespace Business.Concrete
 
         public string Delete(int id)
         {
-            Store deleteStore = storeDal.Get(p => p.Id == id);
-            storeDal.Delete(deleteStore);
+            ProductInStore productInStore = productInStoreDal.Get(p => p.Id == id);
+            productInStoreDal.Delete(productInStore);
             JObject jsonObject = new JObject();
             jsonObject.Add("Status", "success");
             jsonObject.Add("ErrorMessage", "Kayıt başarıyla silindi.");
             JArray array = new JArray();
             array.Add(jsonObject);
             return JsonConvert.SerializeObject(array);
+
+           
+            
         }
 
-        public Store Get(int id)
+        public ProductInStore Get(int id)
         {
-            return storeDal.Get(p => p.Id == id);
+            return productInStoreDal.Get(p => p.Id == id);
         }
 
-        public List<Store> GetAll()
+        public List<ProductInStore> GetAll()
         {
-            return storeDal.GetAll();
+            return productInStoreDal.GetAll();
         }
 
-        
-
-        public string Update(Store entity)
+        public List<ProductInStore> GetAllStore(int ProductId)
         {
+            return productInStoreDal.GetAll(p => p.ProductId == ProductId);
+        }
+
+        public ProductInStore GetStoreCount(int storeId, int ProductId)
+        {
+            return productInStoreDal.Get(m => m.StoreId == storeId && m.ProductId == ProductId);
+        }
+
+        public string Update(ProductInStore entity)
+        {
+
             result = validator.Validate(entity);
             if (result.IsValid)
             {
-                storeDal.Update(entity);
+                productInStoreDal.Update(entity);
                 JObject jsonObject = new JObject();
                 jsonObject.Add("Status", "success");
                 jsonObject.Add("ErrorMessage", "Kayıt başarıyla güncellendi");
@@ -85,6 +99,8 @@ namespace Business.Concrete
             {
                 return JsonConvert.SerializeObject(result.Errors);
             }
+
+            
         }
     }
 }

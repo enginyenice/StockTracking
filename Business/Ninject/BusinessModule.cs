@@ -27,6 +27,16 @@ namespace Business.Ninject
             
             Bind<IProductService>().To<ProductManager>().InSingletonScope();
             Bind<IProductDal>().To<EfProductDal>().InSingletonScope();
+
+            Bind<IProductInStoreService>().To<ProductInStoreManager>().InSingletonScope();
+            Bind<IProductInStoreDal>().To<EfProductInStoreDal>().InSingletonScope();
+
+            Bind<IStockMovementService>().To<StockMovementManager>().InSingletonScope();
+            Bind<IStockMovementDal>().To<EfStockMovementDal>().InSingletonScope();            
+            
+            Bind<IBuyOrSellService>().To<BuyOrSellManager>().InSingletonScope();
+           // Bind<IStockMovementDal>().To<EfStockMovementDal>().InSingletonScope();
+          //  Bind<IProductInStoreDal>().To<EfProductInStoreDal>().InSingletonScope();
         }
     }
 }
