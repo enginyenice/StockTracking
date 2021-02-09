@@ -11,24 +11,25 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class StoreManager : IStoreService
+    public class ProductManager : IProductService
     {
-        IStoreDal storeDal;
-        StoreValidation validator;
+
+        IProductDal productDal;
+        ProductValidation validator;
         ValidationResult result;
-        public StoreManager(IStoreDal storeDal)
+
+        public ProductManager(IProductDal productDal)
         {
-            validator = new StoreValidation();
-            this.storeDal = storeDal;
+            validator = new ProductValidation();
+            this.productDal = productDal;
         }
 
-        public string Add(Store entity)
+        public string Add(Product entity)
         {
             result = validator.Validate(entity);
             if (result.IsValid)
             {
-                
-                storeDal.Add(entity);
+                productDal.Add(entity);
                 JObject jsonObject = new JObject();
                 jsonObject.Add("Status", "success");
                 jsonObject.Add("ErrorMessage", "Kayıt başarıyla oluşturuldu");
@@ -45,8 +46,8 @@ namespace Business.Concrete
 
         public string Delete(int id)
         {
-            Store deleteStore = storeDal.Get(p => p.Id == id);
-            storeDal.Delete(deleteStore);
+            Product deleteProduct = productDal.Get(p => p.Id == id);
+            productDal.Delete(deleteProduct);
             JObject jsonObject = new JObject();
             jsonObject.Add("Status", "success");
             jsonObject.Add("ErrorMessage", "Kayıt başarıyla silindi.");
@@ -55,22 +56,21 @@ namespace Business.Concrete
             return JsonConvert.SerializeObject(array);
         }
 
-        public Store Get(int id)
+        public Product Get(int id)
         {
-            return storeDal.Get(p => p.Id == id);
+            return productDal.Get(p => p.Id == id);
         }
 
-        public List<Store> GetAll()
+        public List<Product> GetAll()
         {
-            return storeDal.GetAll();
+            return productDal.GetAll();
         }
 
-        public string Update(Store entity)
+        public string Update(Product entity)
         {
-            result = validator.Validate(entity);
             if (result.IsValid)
             {
-                storeDal.Update(entity);
+                productDal.Update(entity);
                 JObject jsonObject = new JObject();
                 jsonObject.Add("Status", "success");
                 jsonObject.Add("ErrorMessage", "Kayıt başarıyla güncellendi");

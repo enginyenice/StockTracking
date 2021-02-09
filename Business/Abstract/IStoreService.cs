@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    interface IStoreService
+    public interface IStoreService
     {
         List<Store> GetAll();
         Store Get(int id);

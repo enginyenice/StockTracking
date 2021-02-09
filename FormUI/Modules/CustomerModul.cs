@@ -47,7 +47,6 @@ namespace FormUI.Modules
             catch (Exception)
             {
                 MessageBox.Show("Tekrar deneyiniz...");
-                throw;
             }
         }
 

@@ -23,7 +23,10 @@ namespace Business.Ninject
             Bind<ISupplierDal>().To<EfSupplierDal>().InSingletonScope();            
             
             Bind<IStoreService>().To<StoreManager>().InSingletonScope();
-            Bind<IStoreDal>().To<EfStoreDal>().InSingletonScope();
+            Bind<IStoreDal>().To<EfStoreDal>().InSingletonScope();            
+            
+            Bind<IProductService>().To<ProductManager>().InSingletonScope();
+            Bind<IProductDal>().To<EfProductDal>().InSingletonScope();
         }
     }
 }
