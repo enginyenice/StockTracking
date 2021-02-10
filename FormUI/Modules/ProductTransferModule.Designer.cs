@@ -31,13 +31,14 @@ namespace FormUI.Modules
         {
             this.TransferBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.PieceeTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.StoreTransferList = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.StoreList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ProductList = new System.Windows.Forms.ComboBox();
+            this.PieeceNumber = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.PieeceNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // TransferBtn
@@ -48,6 +49,7 @@ namespace FormUI.Modules
             this.TransferBtn.TabIndex = 30;
             this.TransferBtn.Text = "Transfer Et";
             this.TransferBtn.UseVisualStyleBackColor = true;
+            this.TransferBtn.Click += new System.EventHandler(this.TransferBtn_Click);
             // 
             // label5
             // 
@@ -57,14 +59,6 @@ namespace FormUI.Modules
             this.label5.Size = new System.Drawing.Size(32, 15);
             this.label5.TabIndex = 27;
             this.label5.Text = "Adet";
-            // 
-            // PieceeTxt
-            // 
-            this.PieceeTxt.Location = new System.Drawing.Point(186, 77);
-            this.PieceeTxt.Name = "PieceeTxt";
-            this.PieceeTxt.Size = new System.Drawing.Size(170, 23);
-            this.PieceeTxt.TabIndex = 26;
-            this.PieceeTxt.Text = "1";
             // 
             // label4
             // 
@@ -122,14 +116,21 @@ namespace FormUI.Modules
             this.ProductList.TabIndex = 18;
             this.ProductList.SelectedIndexChanged += new System.EventHandler(this.ProductList_SelectedIndexChanged);
             // 
+            // PieeceNumber
+            // 
+            this.PieeceNumber.Location = new System.Drawing.Point(187, 77);
+            this.PieeceNumber.Name = "PieeceNumber";
+            this.PieeceNumber.Size = new System.Drawing.Size(169, 23);
+            this.PieeceNumber.TabIndex = 32;
+            // 
             // ProductTransferModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 127);
+            this.Controls.Add(this.PieeceNumber);
             this.Controls.Add(this.TransferBtn);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.PieceeTxt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.StoreTransferList);
             this.Controls.Add(this.label2);
@@ -139,6 +140,7 @@ namespace FormUI.Modules
             this.Name = "ProductTransferModule";
             this.Text = "ProductTransferModule";
             this.Load += new System.EventHandler(this.ProductTransferModule_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.PieeceNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,12 +150,12 @@ namespace FormUI.Modules
 
         private System.Windows.Forms.Button TransferBtn;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox PieceeTxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox StoreTransferList;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox StoreList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ProductList;
+        private System.Windows.Forms.NumericUpDown PieeceNumber;
     }
 }

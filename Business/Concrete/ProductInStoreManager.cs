@@ -80,6 +80,47 @@ namespace Business.Concrete
             return productInStoreDal.Get(m => m.StoreId == storeId && m.ProductId == ProductId);
         }
 
+        public string Transfer(int storeID, int storeTransferId, int ProductId, int Count)
+        {
+            try
+            {
+                var FirstStore = productInStoreDal.Get(p => p.StoreId == storeID && p.ProductId == ProductId);
+                //var LastStore = productInStoreDal.Get(p => p.StoreId == storeID && p.ProductId == ProductId);
+
+                ProductInStore transferControlData = productInStoreDal.Get(p => p.StoreId == storeTransferId && p.ProductId == ProductId);
+                if(transferControlData == null)
+                {
+                    ProductInStore LastStoreNew = new ProductInStore { ProductId = ProductId, StoreId = storeTransferId, Stock = Count };
+                    productInStoreDal.Add(LastStoreNew);
+                } else
+                {
+                    var LastStore = productInStoreDal.Get(p => p.StoreId == storeTransferId && p.ProductId == ProductId);
+                    LastStore.Stock = LastStore.Stock + Count;
+                    productInStoreDal.Update(LastStore);
+                }
+                FirstStore.Stock = FirstStore.Stock - Count;
+                productInStoreDal.Update(FirstStore);
+
+                JObject jsonObject = new JObject();
+                jsonObject.Add("Status", "success");
+                jsonObject.Add("ErrorMessage", "Transfer başarıyla tamamlandı");
+                JArray array = new JArray();
+                array.Add(jsonObject);
+                return JsonConvert.SerializeObject(array);
+
+            }
+            catch (Exception)
+            {
+
+                JObject jsonObject = new JObject();
+                //jsonObject.Add("Status", "success");
+                jsonObject.Add("ErrorMessage", "Transfer gerçekleştirilemedi. Tekrar deneyiniz...");
+                JArray array = new JArray();
+                array.Add(jsonObject);
+                return JsonConvert.SerializeObject(array);
+            }
+        }
+
         public string Update(ProductInStore entity)
         {
 

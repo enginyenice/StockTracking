@@ -65,7 +65,10 @@ namespace Business.Concrete
             return storeDal.GetAll();
         }
 
-        
+        public List<Store> GetAllOrderStore(int id)
+        {
+            return storeDal.GetAll(p => p.Id != id);
+        }
 
         public string Update(Store entity)
         {

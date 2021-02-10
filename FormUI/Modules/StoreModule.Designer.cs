@@ -29,7 +29,7 @@ namespace FormUI.Modules
         /// </summary>
         private void InitializeComponent()
         {
-            this.StoreGridView = new System.Windows.Forms.DataGridView();
+            this.TransferBtn = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
@@ -47,22 +47,23 @@ namespace FormUI.Modules
             this.CreatePhoneNumberTxt = new System.Windows.Forms.TextBox();
             this.CreateStoreNameTxt = new System.Windows.Forms.TextBox();
             this.CreateAddressTxt = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.StoreGridView)).BeginInit();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.TransferBtn)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // StoreGridView
+            // TransferBtn
             // 
-            this.StoreGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TransferBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StoreGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StoreGridView.Location = new System.Drawing.Point(246, 22);
-            this.StoreGridView.Name = "StoreGridView";
-            this.StoreGridView.RowTemplate.Height = 25;
-            this.StoreGridView.Size = new System.Drawing.Size(747, 543);
-            this.StoreGridView.TabIndex = 21;
+            this.TransferBtn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TransferBtn.Location = new System.Drawing.Point(246, 12);
+            this.TransferBtn.Name = "TransferBtn";
+            this.TransferBtn.RowTemplate.Height = 25;
+            this.TransferBtn.Size = new System.Drawing.Size(747, 591);
+            this.TransferBtn.TabIndex = 21;
             // 
             // groupBox2
             // 
@@ -74,7 +75,7 @@ namespace FormUI.Modules
             this.groupBox2.Controls.Add(this.EditPhoneNumberTxt);
             this.groupBox2.Controls.Add(this.EditStoreNameTxt);
             this.groupBox2.Controls.Add(this.EditAddressTxt);
-            this.groupBox2.Location = new System.Drawing.Point(12, 286);
+            this.groupBox2.Location = new System.Drawing.Point(12, 332);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(228, 279);
             this.groupBox2.TabIndex = 20;
@@ -159,7 +160,7 @@ namespace FormUI.Modules
             this.groupBox1.Controls.Add(this.CreatePhoneNumberTxt);
             this.groupBox1.Controls.Add(this.CreateStoreNameTxt);
             this.groupBox1.Controls.Add(this.CreateAddressTxt);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 58);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(228, 268);
             this.groupBox1.TabIndex = 19;
@@ -225,18 +226,29 @@ namespace FormUI.Modules
             this.CreateAddressTxt.Size = new System.Drawing.Size(207, 89);
             this.CreateAddressTxt.TabIndex = 8;
             // 
-            // StoreModul
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(228, 40);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Transfer Yap";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // StoreModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 577);
-            this.Controls.Add(this.StoreGridView);
+            this.ClientSize = new System.Drawing.Size(1005, 625);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.TransferBtn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "StoreModul";
+            this.Name = "StoreModule";
             this.Text = "StoreModul";
             this.Load += new System.EventHandler(this.StoreModul_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.StoreGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TransferBtn)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -247,7 +259,7 @@ namespace FormUI.Modules
 
         #endregion
 
-        private System.Windows.Forms.DataGridView StoreGridView;
+        private System.Windows.Forms.DataGridView TransferBtn;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Button UpdateBtn;
@@ -265,5 +277,6 @@ namespace FormUI.Modules
         private System.Windows.Forms.TextBox CreatePhoneNumberTxt;
         private System.Windows.Forms.TextBox CreateStoreNameTxt;
         private System.Windows.Forms.TextBox CreateAddressTxt;
+        private System.Windows.Forms.Button button1;
     }
 }

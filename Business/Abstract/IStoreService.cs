@@ -12,5 +12,6 @@ namespace Business.Abstract
         string Add(Store entity);
         string Delete(int id);
         string Update(Store entity);
+        List<Store> GetAllOrderStore(int id);
     }
 }

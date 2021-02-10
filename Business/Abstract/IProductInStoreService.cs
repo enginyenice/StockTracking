@@ -14,5 +14,6 @@ namespace Business.Abstract
         string Add(ProductInStore entity);
         string Delete(int id);
         string Update(ProductInStore entity);
+        string Transfer(int storeID, int storeTransferId,int ProductId, int Count);
     }
 }

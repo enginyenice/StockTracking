@@ -25,19 +25,19 @@ namespace FormUI.Modules
 
         private void StoreModul_Load(object sender, EventArgs e)
         {
-            StoreGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            StoreGridView.ReadOnly = true;
-            StoreGridView.ColumnCount = 4;
-            StoreGridView.Columns[0].Name = "ID";
-            StoreGridView.Columns[1].Name = "Depo Adı";
-            StoreGridView.Columns[2].Name = "Telefon";
-            StoreGridView.Columns[3].Name = "Adres";
+            TransferBtn.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TransferBtn.ReadOnly = true;
+            TransferBtn.ColumnCount = 4;
+            TransferBtn.Columns[0].Name = "ID";
+            TransferBtn.Columns[1].Name = "Depo Adı";
+            TransferBtn.Columns[2].Name = "Telefon";
+            TransferBtn.Columns[3].Name = "Adres";
             StoreGridViewGetAll();
         }
 
         private void StoreGridViewGetAll()
         {
-            StoreGridView.Rows.Clear();
+            TransferBtn.Rows.Clear();
             foreach (var store in storeService.GetAll())
             {
                 string[] row = new string[] {
@@ -47,7 +47,7 @@ namespace FormUI.Modules
                 store.Address
                 
                 };
-                StoreGridView.Rows.Add(row);
+                TransferBtn.Rows.Add(row);
             }
         }
 
@@ -81,7 +81,7 @@ namespace FormUI.Modules
             {
                 Store store = new Store
                 {
-                    Id = Convert.ToInt32(StoreGridView.SelectedRows[0].Cells[0].Value.ToString()),
+                    Id = Convert.ToInt32(TransferBtn.SelectedRows[0].Cells[0].Value.ToString()),
                     Address = EditAddressTxt.Text,
                     Name = EditStoreNameTxt.Text,
                     PhoneNumber = EditPhoneNumberTxt.Text
@@ -100,7 +100,7 @@ namespace FormUI.Modules
         {
             try
             {
-                createMessage.CreateMessageBox(storeService.Delete(Convert.ToInt32(StoreGridView.SelectedRows[0].Cells[0].Value.ToString())));
+                createMessage.CreateMessageBox(storeService.Delete(Convert.ToInt32(TransferBtn.SelectedRows[0].Cells[0].Value.ToString())));
                 EditStoreNameTxt.Text = "";
                 EditStoreNameTxt.Text = "";
                 EditPhoneNumberTxt.Text = "";
@@ -111,6 +111,12 @@ namespace FormUI.Modules
 
                 MessageBox.Show("Tekrar deneyiniz...");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ProductTransferModule productTransferModule = new ProductTransferModule();
+            productTransferModule.ShowDialog();
         }
     }
 }
