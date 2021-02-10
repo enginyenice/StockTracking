@@ -34,7 +34,7 @@ Tedarikçi tanımlanırken istenen bilgiler;
 #### :x: Depo Modülü
 :heavy_check_mark: Depo ekle/sil/güncelle işlemlerinin yapılması.
 
-:x: Depolar arası transfer ( A deposundan B deposuna ürün aktarımı)
+:heavy_check_mark: Depolar arası transfer ( A deposundan B deposuna ürün aktarımı)
 
 :x: Depoda bulunan stok sayısına göre yöneticinin uyarılması.
 
