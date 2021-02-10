@@ -2,6 +2,7 @@
 using Business.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using FluentValidation.Results;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -43,6 +44,11 @@ namespace Business.Concrete
             {
                 return JsonConvert.SerializeObject(result.Errors);
             }
+        }
+
+        public List<CriticalStockReportDto> CriticalStockReport()
+        {
+            return productInStoreDal.CriticalStockReport();
         }
 
         public string Delete(int id)

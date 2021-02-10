@@ -14,11 +14,13 @@ namespace FormUI.Modules
     public partial class StoreModule : Form
     {
         IStoreService storeService;
+        IProductInStoreService productInStoreService;
         CreateMessage createMessage;
 
         public StoreModule()
         {
             storeService = InstanceFactory.GetInstance<IStoreService>();
+            productInStoreService = InstanceFactory.GetInstance<IProductInStoreService>();
             createMessage = new CreateMessage();
             InitializeComponent();
         }
@@ -33,6 +35,22 @@ namespace FormUI.Modules
             TransferBtn.Columns[2].Name = "Telefon";
             TransferBtn.Columns[3].Name = "Adres";
             StoreGridViewGetAll();
+
+            foreach (var CriticalStock in productInStoreService.CriticalStockReport())
+            {
+                if(CriticalStock.CriticalStock > CriticalStock.Stock)
+                {
+                    string msg = CriticalStock.StoreName + " deposunda bulunan " + CriticalStock.ProductName + " isimli ürün kritik seviyeye ulaşmıştır.!!";
+                    MessageBox.Show(msg,"Kritik Seviye", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            //CriticalStockReport
+
+
+
+
+
+
         }
 
         private void StoreGridViewGetAll()

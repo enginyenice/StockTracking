@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,5 +16,6 @@ namespace Business.Abstract
         string Delete(int id);
         string Update(ProductInStore entity);
         string Transfer(int storeID, int storeTransferId,int ProductId, int Count);
+        List<CriticalStockReportDto> CriticalStockReport();
     }
 }
