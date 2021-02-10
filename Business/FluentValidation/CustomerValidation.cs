@@ -1,8 +1,5 @@
 ﻿using Entities.Concrete;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Business.FluentValidation
@@ -25,6 +22,7 @@ namespace Business.FluentValidation
             //PhoneNumber
             RuleFor(customer => customer.PhoneNumber).NotEmpty().WithMessage("Telefon Numarası alanı zorunludur");
         }
+
         private bool IsNameValid(string arg)
         {
             try

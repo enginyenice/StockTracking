@@ -1,7 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
@@ -16,12 +13,12 @@ namespace FormUI.Modules
             foreach (JObject item in jsonArray)
             {
                 status = (item.GetValue("Status") == null) ? "" : item.GetValue("Status").ToString();
-                message += "• "+item.GetValue("ErrorMessage").ToString()+"\n";
+                message += "• " + item.GetValue("ErrorMessage").ToString() + "\n";
             }
             if (status == "success")
-                MessageBox.Show(message, message,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(message, message, MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show(message,"Bir hata oluştu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message, "Bir hata oluştu", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

@@ -5,18 +5,15 @@ using Entities.Concrete;
 using FluentValidation.Results;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
     public class ProductManager : IProductService
     {
-
-        IProductDal productDal;
-        ProductValidation validator;
-        ValidationResult result;
+        private IProductDal productDal;
+        private ProductValidation validator;
+        private ValidationResult result;
 
         public ProductManager(IProductDal productDal)
         {
@@ -36,7 +33,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {
@@ -77,7 +73,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {

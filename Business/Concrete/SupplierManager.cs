@@ -1,22 +1,19 @@
 ﻿using Business.Abstract;
 using Business.FluentValidation;
 using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using FluentValidation.Results;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace Business.Concrete
 {
     public class SupplierManager : ISupplierService
     {
-        ISupplierDal supplierDal;
-        SupplierValidation validator;
-        ValidationResult result;
+        private ISupplierDal supplierDal;
+        private SupplierValidation validator;
+        private ValidationResult result;
 
         public SupplierManager(ISupplierDal supplierDal)
         {
@@ -36,7 +33,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {
@@ -78,7 +74,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {

@@ -2,23 +2,18 @@
 using Business.Ninject;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class ProductTransferModule : Form
     {
-        IProductService productService;
-        IStoreService storeService;
-        ISupplierService supplierService;
-        IBuyOrSellService buyOrSellService;
-        IProductInStoreService productInStoreService;
-        CreateMessage createMessage;
+        private IProductService productService;
+        private IStoreService storeService;
+        private ISupplierService supplierService;
+        private IBuyOrSellService buyOrSellService;
+        private IProductInStoreService productInStoreService;
+        private CreateMessage createMessage;
 
         public ProductTransferModule()
         {
@@ -43,17 +38,17 @@ namespace FormUI.Modules
             int ProductId = Convert.ToInt32(productArray[0]);
             StoreList.Items.Clear();
             foreach (var store in productInStoreService.GetAllStore(ProductId))
-            {  
-                if(store.Stock > 0) { 
-                Store storeData = storeService.Get(store.StoreId);
-                StoreList.Items.Add(storeData.Id + ") " + storeData.Name);
+            {
+                if (store.Stock > 0)
+                {
+                    Store storeData = storeService.Get(store.StoreId);
+                    StoreList.Items.Add(storeData.Id + ") " + storeData.Name);
                 }
             }
         }
 
         private void StoreList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             string[] productArray = ProductList.SelectedItem.ToString().Split(')');
             int ProductId = Convert.ToInt32(productArray[0]);
 
@@ -61,21 +56,19 @@ namespace FormUI.Modules
             int StoreId = Convert.ToInt32(storeArray[0]);
 
             StoreTransferList.Items.Clear();
-            
+
             foreach (var store in storeService.GetAllOrderStore(StoreId))
             {
                 StoreTransferList.Items.Add(store.Id + ") " + store.Name);
             }
             PieeceNumber.Minimum = 0;
-            PieeceNumber.Maximum = (productInStoreService.GetStoreCount(StoreId, ProductId) != null)? productInStoreService.GetStoreCount(StoreId, ProductId).Stock : 0;
+            PieeceNumber.Maximum = (productInStoreService.GetStoreCount(StoreId, ProductId) != null) ? productInStoreService.GetStoreCount(StoreId, ProductId).Stock : 0;
             PieeceNumber.Value = 0;
         }
 
         private void TransferBtn_Click(object sender, EventArgs e)
         {
-
-
-            if(PieeceNumber.Value > 0)
+            if (PieeceNumber.Value > 0)
             {
                 try
                 {
@@ -96,15 +89,13 @@ namespace FormUI.Modules
                 }
                 catch (Exception)
                 {
-
                     MessageBox.Show("Tüm alanları eksiksiz doldurunuz..");
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("Adet 0 dan büyük olmalıdır.");
             }
-
-
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using Entities.Concrete;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Business.FluentValidation
 {
@@ -11,7 +7,6 @@ namespace Business.FluentValidation
     {
         public SupplierValidation()
         {
-            
             //CompanyName
             RuleFor(supplier => supplier.CompanyName).NotEmpty().WithMessage("Firma adı alanı zorunludur");
             //Email

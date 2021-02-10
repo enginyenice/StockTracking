@@ -1,7 +1,4 @@
 ﻿using Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entities.Concrete
 {
@@ -9,6 +6,7 @@ namespace Entities.Concrete
     {
         //-Depo numarası, Depo Adı, Depo Adres, Depo telefon.
         public int Id { get; set; }
+
         public string Name { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }

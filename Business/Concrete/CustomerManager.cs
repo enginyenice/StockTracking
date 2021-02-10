@@ -5,17 +5,16 @@ using Entities.Concrete;
 using FluentValidation.Results;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
     public class CustomerManager : ICustomerService
     {
-        ICustomerDal customerDal;
-        CustomerValidation validator;
-        ValidationResult result;
+        private ICustomerDal customerDal;
+        private CustomerValidation validator;
+        private ValidationResult result;
+
         public CustomerManager(ICustomerDal customerDal)
         {
             validator = new CustomerValidation();
@@ -24,7 +23,6 @@ namespace Business.Concrete
 
         public string Add(Customer entity)
         {
-
             result = validator.Validate(entity);
             if (result.IsValid)
             {
@@ -35,7 +33,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {
@@ -67,7 +64,6 @@ namespace Business.Concrete
 
         public string Update(Customer entity)
         {
-            
             result = validator.Validate(entity);
             if (result.IsValid)
             {
@@ -78,7 +74,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {

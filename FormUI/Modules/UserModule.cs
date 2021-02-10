@@ -1,18 +1,16 @@
 ﻿using Business.Abstract;
 using Business.Ninject;
 using Entities.Concrete;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class UserModule : Form
     {
-        readonly IUserService userService;
-        CreateMessage createMessage;
+        private readonly IUserService userService;
+        private CreateMessage createMessage;
+
         public UserModule()
         {
             createMessage = new CreateMessage();
@@ -82,14 +80,8 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz");
             }
-
-
-
-
-
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
@@ -112,9 +104,7 @@ namespace FormUI.Modules
             catch (Exception)
             {
                 MessageBox.Show("Tekrar deneyiniz...");
-
             }
-            
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -126,10 +116,8 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz");
             }
-
         }
     }
 }

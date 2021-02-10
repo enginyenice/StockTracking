@@ -8,15 +8,14 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
     public class ProductInStoreManager : IProductInStoreService
     {
-        IProductInStoreDal productInStoreDal;
-        ProductInStoreValidation validator;
-        ValidationResult result;
+        private IProductInStoreDal productInStoreDal;
+        private ProductInStoreValidation validator;
+        private ValidationResult result;
 
         public ProductInStoreManager(IProductInStoreDal productInStoreDal)
         {
@@ -26,8 +25,6 @@ namespace Business.Concrete
 
         public string Add(ProductInStore entity)
         {
-           
-
             result = validator.Validate(entity);
             if (result.IsValid)
             {
@@ -38,7 +35,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {
@@ -61,9 +57,6 @@ namespace Business.Concrete
             JArray array = new JArray();
             array.Add(jsonObject);
             return JsonConvert.SerializeObject(array);
-
-           
-            
         }
 
         public ProductInStore Get(int id)
@@ -94,11 +87,12 @@ namespace Business.Concrete
                 //var LastStore = productInStoreDal.Get(p => p.StoreId == storeID && p.ProductId == ProductId);
 
                 ProductInStore transferControlData = productInStoreDal.Get(p => p.StoreId == storeTransferId && p.ProductId == ProductId);
-                if(transferControlData == null)
+                if (transferControlData == null)
                 {
                     ProductInStore LastStoreNew = new ProductInStore { ProductId = ProductId, StoreId = storeTransferId, Stock = Count };
                     productInStoreDal.Add(LastStoreNew);
-                } else
+                }
+                else
                 {
                     var LastStore = productInStoreDal.Get(p => p.StoreId == storeTransferId && p.ProductId == ProductId);
                     LastStore.Stock = LastStore.Stock + Count;
@@ -113,11 +107,9 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             catch (Exception)
             {
-
                 JObject jsonObject = new JObject();
                 //jsonObject.Add("Status", "success");
                 jsonObject.Add("ErrorMessage", "Transfer gerçekleştirilemedi. Tekrar deneyiniz...");
@@ -129,7 +121,6 @@ namespace Business.Concrete
 
         public string Update(ProductInStore entity)
         {
-
             result = validator.Validate(entity);
             if (result.IsValid)
             {
@@ -140,14 +131,11 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {
                 return JsonConvert.SerializeObject(result.Errors);
             }
-
-            
         }
     }
 }

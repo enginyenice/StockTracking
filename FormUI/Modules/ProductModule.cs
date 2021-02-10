@@ -2,19 +2,15 @@
 using Business.Ninject;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class ProductModule : Form
     {
-        IProductService productService;
-        CreateMessage createMessage;
+        private IProductService productService;
+        private CreateMessage createMessage;
+
         public ProductModule()
         {
             productService = InstanceFactory.GetInstance<IProductService>();
@@ -60,11 +56,11 @@ namespace FormUI.Modules
             {
                 Product product = new Product
                 {
-                   Type = CreateTypeTxt.Text,
-                   Unit = CreateUnitTxt.Text,
-                   Description = CreateDescriptionTxt.Text,
-                   Image = CreateImageTxt.Text,
-                   CriticalStock = (CreateCriticalStockTxt.Text != "") ? Convert.ToInt32(CreateCriticalStockTxt.Text) : -1
+                    Type = CreateTypeTxt.Text,
+                    Unit = CreateUnitTxt.Text,
+                    Description = CreateDescriptionTxt.Text,
+                    Image = CreateImageTxt.Text,
+                    CriticalStock = (CreateCriticalStockTxt.Text != "") ? Convert.ToInt32(CreateCriticalStockTxt.Text) : -1
                 };
                 createMessage.CreateMessageBox(productService.Add(product));
                 ProductGridViewGetAll();
@@ -116,7 +112,6 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz...");
             }
         }

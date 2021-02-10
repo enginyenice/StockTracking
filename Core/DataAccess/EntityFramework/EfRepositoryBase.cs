@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Core.DataAccess.EntityFramework
 {
@@ -52,7 +51,7 @@ namespace Core.DataAccess.EntityFramework
 
         public void Update(TEntity entity)
         {
-             using (TContext context = new TContext())
+            using (TContext context = new TContext())
             {
                 var ModifiedEntity = context.Entry(entity);
                 ModifiedEntity.State = EntityState.Modified;

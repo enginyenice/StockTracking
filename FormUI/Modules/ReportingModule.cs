@@ -1,18 +1,13 @@
 ﻿using Business.Abstract;
 using Business.Ninject;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class ReportingModule : Form
     {
-        IStockMovementService stockMovementService;
+        private IStockMovementService stockMovementService;
 
         public ReportingModule()
         {
@@ -22,7 +17,6 @@ namespace FormUI.Modules
 
         private void ReportingModule_Load(object sender, EventArgs e)
         {
-
             ReportGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ReportGridView.ReadOnly = true;
             ReportGridView.ColumnCount = 7;
@@ -49,7 +43,6 @@ namespace FormUI.Modules
                     report.Piece.ToString(),
                     report.UnitPrice.ToString(),
                     report.TotalPrice.ToString()
-
                 };
                 ReportGridView.Rows.Add(row);
                 if (report.Type == "Alış")

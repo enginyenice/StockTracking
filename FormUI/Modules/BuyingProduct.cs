@@ -2,22 +2,18 @@
 using Business.Ninject;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class BuyingProduct : Form
     {
-        IProductService productService;
-        IStoreService storeService;
-        ISupplierService supplierService;
-        IBuyOrSellService buyOrSellService;
-        CreateMessage createMessage;
+        private IProductService productService;
+        private IStoreService storeService;
+        private ISupplierService supplierService;
+        private IBuyOrSellService buyOrSellService;
+        private CreateMessage createMessage;
+
         public BuyingProduct()
         {
             productService = InstanceFactory.GetInstance<IProductService>();
@@ -26,9 +22,6 @@ namespace FormUI.Modules
             buyOrSellService = InstanceFactory.GetInstance<IBuyOrSellService>();
             createMessage = new CreateMessage();
             InitializeComponent();
-           
-
-
         }
 
         private void BuyingProduct_Load(object sender, EventArgs e)
@@ -43,12 +36,10 @@ namespace FormUI.Modules
 
         private void UnitPriceTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
         }
 
         private void PieceeTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-
         }
 
         private void PieceeTxt_KeyUp(object sender, KeyEventArgs e)
@@ -59,10 +50,8 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 TotalPriceTxt.Text = "";
             }
-            
         }
 
         private void UnitPriceTxt_KeyUp(object sender, KeyEventArgs e)
@@ -73,42 +62,37 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 TotalPriceTxt.Text = "";
             }
         }
 
         private void CreateBtn_Click(object sender, EventArgs e)
         {
-    
-                string[] productArray = ProductList.SelectedItem.ToString().Split(')');
-                string[] supplierArray = SupplierList.SelectedItem.ToString().Split(')');
-                string[] storeArray = StoreList.SelectedItem.ToString().Split(')');
+            string[] productArray = ProductList.SelectedItem.ToString().Split(')');
+            string[] supplierArray = SupplierList.SelectedItem.ToString().Split(')');
+            string[] storeArray = StoreList.SelectedItem.ToString().Split(')');
 
+            int ProductId = Convert.ToInt32(productArray[0]);
+            int SupplierId = Convert.ToInt32(supplierArray[0]);
+            int StoreId = Convert.ToInt32(storeArray[0]);
 
-                int ProductId = Convert.ToInt32(productArray[0]);
-                int SupplierId = Convert.ToInt32(supplierArray[0]);
-                int StoreId = Convert.ToInt32(storeArray[0]);
-
-                ProductInStore productInStore = new ProductInStore
-                {
-                    ProductId = ProductId,
-                    StoreId = StoreId,
-                    Stock = Convert.ToInt32(PieceeTxt.Text)
-                };
-                StockMovement stockMovement = new StockMovement
-                {
-                    MemberNumber = SupplierId,
-                    Type = "Buy",
-                    Piece = Convert.ToInt32(PieceeTxt.Text),
-                    ProductId = ProductId,
-                    TotalPrice = decimal.Parse(TotalPriceTxt.Text),
-                    UnitPrice = decimal.Parse(UnitPriceTxt.Text),
-                    TransactionDate = DateTime.Now
-                };
-                createMessage.CreateMessageBox(buyOrSellService.Buy(productInStore, stockMovement));
-         
-
+            ProductInStore productInStore = new ProductInStore
+            {
+                ProductId = ProductId,
+                StoreId = StoreId,
+                Stock = Convert.ToInt32(PieceeTxt.Text)
+            };
+            StockMovement stockMovement = new StockMovement
+            {
+                MemberNumber = SupplierId,
+                Type = "Buy",
+                Piece = Convert.ToInt32(PieceeTxt.Text),
+                ProductId = ProductId,
+                TotalPrice = decimal.Parse(TotalPriceTxt.Text),
+                UnitPrice = decimal.Parse(UnitPriceTxt.Text),
+                TransactionDate = DateTime.Now
+            };
+            createMessage.CreateMessageBox(buyOrSellService.Buy(productInStore, stockMovement));
         }
     }
 }

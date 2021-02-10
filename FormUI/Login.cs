@@ -2,22 +2,15 @@
 using Business.Ninject;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FormUI
 {
     public partial class Login : Form
     {
-        readonly IUserService userService;
+        private readonly IUserService userService;
         public User LoginUser;
-        
+
         public Login()
         {
             userService = InstanceFactory.GetInstance<IUserService>();
@@ -30,8 +23,6 @@ namespace FormUI
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            
-            
             bool LoginCheck = userService.LoginControl(new User { UserName = UserNameTxt.Text, Password = PasswordTxt.Text });
             if (LoginCheck)
             {
@@ -43,18 +34,17 @@ namespace FormUI
                         administratorPanel.Show();
                         this.Hide();
                         break;
+
                     case 1:
                         UserPanel userPanel = new UserPanel(LoginUser);
                         userPanel.Show();
                         this.Hide();
                         break;
+
                     default:
                         MessageBox.Show("Hatalı seçim yaptınız.");
                         break;
                 }
-
-
-
             }
         }
     }

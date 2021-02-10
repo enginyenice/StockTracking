@@ -4,7 +4,6 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
@@ -18,7 +17,6 @@ namespace DataAccess.Concrete.EntityFramework
                 DateTime date = DateTime.Now;
                 var shortDate = date.Date;
 
-
                 var result = from p in context.StockMovements
                              join c in context.Customers
                              on p.MemberNumber equals c.Id
@@ -30,7 +28,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new ProductReportDto
                              {
                                  Id = p.Id,
-                                 ProductDetail = "["+s.Id+"] "+s.Description,
+                                 ProductDetail = "[" + s.Id + "] " + s.Description,
                                  FirstName = (p.Type == "Buy") ? d.CompanyName : c.FirstName,
                                  LastName = (p.Type == "Buy") ? "" : c.LastName,
                                  Piece = p.Piece,
@@ -40,10 +38,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  TransactionDate = p.TransactionDate
                              };
 
-                    return result.ToList();
-
-
-
+                return result.ToList();
             }
         }
     }

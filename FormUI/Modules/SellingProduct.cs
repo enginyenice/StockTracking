@@ -2,23 +2,18 @@
 using Business.Ninject;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class SellingProduct : Form
     {
-        IProductService productService;
-        IStoreService storeService;
-        ICustomerService customerService;
-        IBuyOrSellService buyOrSellService;
-        IProductInStoreService productInStoreService;
-        CreateMessage createMessage;
+        private IProductService productService;
+        private IStoreService storeService;
+        private ICustomerService customerService;
+        private IBuyOrSellService buyOrSellService;
+        private IProductInStoreService productInStoreService;
+        private CreateMessage createMessage;
 
         public SellingProduct()
         {
@@ -38,7 +33,6 @@ namespace FormUI.Modules
                 CustomerList.Items.Add(customer.Id + ")" + customer.FirstName + " " + customer.LastName);
             foreach (var product in productService.GetAll())
                 ProductList.Items.Add(product.Id + ")" + product.Description);
-
         }
 
         private void ProductList_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,7 +44,6 @@ namespace FormUI.Modules
             {
                 Store getStore = storeService.Get(store.StoreId);
                 StoreList.Items.Add(getStore.Id + ") " + getStore.Name);
-                
             }
         }
 
@@ -64,7 +57,7 @@ namespace FormUI.Modules
             UnitPriceTxt.Text = "";
             PieeceNumber.Value = 0;
             PieeceNumber.Minimum = 0;
-            PieeceNumber.Maximum = (productInStoreService.GetStoreCount(StoreId,ProductId)== null) ? 0 : productInStoreService.GetStoreCount(StoreId, ProductId).Stock;
+            PieeceNumber.Maximum = (productInStoreService.GetStoreCount(StoreId, ProductId) == null) ? 0 : productInStoreService.GetStoreCount(StoreId, ProductId).Stock;
             TotalPriceTxt.Text = "";
         }
 
@@ -73,7 +66,6 @@ namespace FormUI.Modules
             string[] storeArray = StoreList.SelectedItem.ToString().Split(')');
             string[] productArray = ProductList.SelectedItem.ToString().Split(')');
             string[] customerArray = CustomerList.SelectedItem.ToString().Split(')');
-
 
             int StoreId = Convert.ToInt32(storeArray[0]);
             int ProductId = Convert.ToInt32(productArray[0]);
@@ -96,7 +88,6 @@ namespace FormUI.Modules
                 TransactionDate = DateTime.Now
             };
             createMessage.CreateMessageBox(buyOrSellService.Sell(productInStore, stockMovement));
-
         }
 
         private void PieeceNumber_Click(object sender, EventArgs e)
@@ -107,7 +98,6 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 TotalPriceTxt.Text = "";
             }
         }
@@ -120,7 +110,6 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 TotalPriceTxt.Text = "";
             }
         }
@@ -133,17 +122,14 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 TotalPriceTxt.Text = "";
             }
         }
-
 
         /*
          string[] productArray = ProductList.SelectedItem.ToString().Split(')');
                 string[] supplierArray = SupplierList.SelectedItem.ToString().Split(')');
                 string[] storeArray = StoreList.SelectedItem.ToString().Split(')');
-
 
                 int ProductId = Convert.ToInt32(productArray[0]);
                 int SupplierId = Convert.ToInt32(supplierArray[0]);

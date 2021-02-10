@@ -6,17 +6,15 @@ using Entities.DTOs;
 using FluentValidation.Results;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
     public class StockMovementManager : IStockMovementService
     {
-        IStockMovementDal stockMovementDal;
-        StockMovementValidation validator;
-        ValidationResult result;
+        private IStockMovementDal stockMovementDal;
+        private StockMovementValidation validator;
+        private ValidationResult result;
 
         public StockMovementManager(IStockMovementDal stockMovementDal)
         {
@@ -26,7 +24,6 @@ namespace Business.Concrete
 
         public string Add(StockMovement entity)
         {
-            
             result = validator.Validate(entity);
             if (result.IsValid)
             {
@@ -37,7 +34,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {
@@ -55,7 +51,6 @@ namespace Business.Concrete
             JArray array = new JArray();
             array.Add(jsonObject);
             return JsonConvert.SerializeObject(array);
-
         }
 
         public StockMovement Get(int id)
@@ -75,8 +70,6 @@ namespace Business.Concrete
 
         public string Update(StockMovement entity)
         {
-           
-
             result = validator.Validate(entity);
             if (result.IsValid)
             {
@@ -87,7 +80,6 @@ namespace Business.Concrete
                 JArray array = new JArray();
                 array.Add(jsonObject);
                 return JsonConvert.SerializeObject(array);
-
             }
             else
             {

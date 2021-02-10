@@ -1,8 +1,5 @@
 ﻿using Entities.Concrete;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Business.FluentValidation
 {
@@ -16,7 +13,6 @@ namespace Business.FluentValidation
             RuleFor(productInStore => productInStore.Stock).NotEmpty().WithMessage("Stok alanı zorunludur");
             //StoreId
             RuleFor(productInStore => productInStore.StoreId).NotEmpty().WithMessage("Depo alanı zorunludur");
-
         }
     }
 }

@@ -2,20 +2,15 @@
 using Business.Ninject;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class StoreModule : Form
     {
-        IStoreService storeService;
-        IProductInStoreService productInStoreService;
-        CreateMessage createMessage;
+        private IStoreService storeService;
+        private IProductInStoreService productInStoreService;
+        private CreateMessage createMessage;
 
         public StoreModule()
         {
@@ -38,19 +33,13 @@ namespace FormUI.Modules
 
             foreach (var CriticalStock in productInStoreService.CriticalStockReport())
             {
-                if(CriticalStock.CriticalStock > CriticalStock.Stock)
+                if (CriticalStock.CriticalStock > CriticalStock.Stock)
                 {
                     string msg = CriticalStock.StoreName + " deposunda bulunan " + CriticalStock.ProductName + " isimli ürün kritik seviyeye ulaşmıştır.!!";
-                    MessageBox.Show(msg,"Kritik Seviye", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(msg, "Kritik Seviye", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             //CriticalStockReport
-
-
-
-
-
-
         }
 
         private void StoreGridViewGetAll()
@@ -63,7 +52,6 @@ namespace FormUI.Modules
                 store.Name,
                 store.PhoneNumber,
                 store.Address
-                
                 };
                 TransferBtn.Rows.Add(row);
             }
@@ -87,10 +75,8 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz...");
             }
-
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
@@ -109,7 +95,6 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz...");
             }
         }
@@ -126,7 +111,6 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz...");
             }
         }

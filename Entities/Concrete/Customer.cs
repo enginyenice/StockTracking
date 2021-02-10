@@ -1,7 +1,4 @@
 ﻿using Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entities.Concrete
 {
@@ -9,6 +6,7 @@ namespace Entities.Concrete
     {
         //-Müşteri numarası, Müşteri Firma Adı, Ad, soyad, E-mail, telefon.
         public int Id { get; set; }
+
         public string CompanyName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

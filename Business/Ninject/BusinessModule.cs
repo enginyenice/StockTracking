@@ -3,9 +3,6 @@ using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Ninject
 {
@@ -20,11 +17,11 @@ namespace Business.Ninject
             Bind<ICustomerDal>().To<EfCustomerDal>().InSingletonScope();
 
             Bind<ISupplierService>().To<SupplierManager>().InSingletonScope();
-            Bind<ISupplierDal>().To<EfSupplierDal>().InSingletonScope();            
-            
+            Bind<ISupplierDal>().To<EfSupplierDal>().InSingletonScope();
+
             Bind<IStoreService>().To<StoreManager>().InSingletonScope();
-            Bind<IStoreDal>().To<EfStoreDal>().InSingletonScope();            
-            
+            Bind<IStoreDal>().To<EfStoreDal>().InSingletonScope();
+
             Bind<IProductService>().To<ProductManager>().InSingletonScope();
             Bind<IProductDal>().To<EfProductDal>().InSingletonScope();
 
@@ -32,11 +29,11 @@ namespace Business.Ninject
             Bind<IProductInStoreDal>().To<EfProductInStoreDal>().InSingletonScope();
 
             Bind<IStockMovementService>().To<StockMovementManager>().InSingletonScope();
-            Bind<IStockMovementDal>().To<EfStockMovementDal>().InSingletonScope();            
-            
+            Bind<IStockMovementDal>().To<EfStockMovementDal>().InSingletonScope();
+
             Bind<IBuyOrSellService>().To<BuyOrSellManager>().InSingletonScope();
-           // Bind<IStockMovementDal>().To<EfStockMovementDal>().InSingletonScope();
-          //  Bind<IProductInStoreDal>().To<EfProductInStoreDal>().InSingletonScope();
+            // Bind<IStockMovementDal>().To<EfStockMovementDal>().InSingletonScope();
+            //  Bind<IProductInStoreDal>().To<EfProductInStoreDal>().InSingletonScope();
         }
     }
 }

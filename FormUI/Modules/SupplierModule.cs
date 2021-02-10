@@ -2,19 +2,15 @@
 using Business.Ninject;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class SupplierModule : Form
     {
-        ISupplierService supplierService;
-        CreateMessage createMessage;
+        private ISupplierService supplierService;
+        private CreateMessage createMessage;
+
         public SupplierModule()
         {
             supplierService = InstanceFactory.GetInstance<ISupplierService>();
@@ -32,7 +28,6 @@ namespace FormUI.Modules
             SupplierGridView.Columns[2].Name = "E-Posta";
             SupplierGridView.Columns[3].Name = "Telefon";
             SupplierGridViewGetAll();
-
         }
 
         private void SupplierGridViewGetAll()
@@ -67,10 +62,8 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz...");
             }
-
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
@@ -107,7 +100,6 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz...");
             }
         }

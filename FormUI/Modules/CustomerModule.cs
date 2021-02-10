@@ -2,19 +2,15 @@
 using Business.Ninject;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FormUI.Modules
 {
     public partial class CustomerModule : Form
     {
-        ICustomerService customerService;
-        CreateMessage createMessage;
+        private ICustomerService customerService;
+        private CreateMessage createMessage;
+
         public CustomerModule()
         {
             customerService = InstanceFactory.GetInstance<ICustomerService>();
@@ -41,8 +37,6 @@ namespace FormUI.Modules
                 CreateCompanyNameTxt.Text = "";
                 CreateEMailTxt.Text = "";
                 CreatePhoneNumberTxt.Text = "";
-                
-                
             }
             catch (Exception)
             {
@@ -61,19 +55,20 @@ namespace FormUI.Modules
             CustomerGridView.Columns[3].Name = "Soyad";
             CustomerGridView.Columns[4].Name = "E-Posta";
             CustomerGridView.Columns[5].Name = "Telefon";
-            
+
             CustomerGridViewGetAll();
         }
+
         private void CustomerGridViewGetAll()
         {
             CustomerGridView.Rows.Clear();
             foreach (var customer in customerService.GetAll())
             {
-                string[] row = new string[] { 
-                customer.Id.ToString(), 
-                customer.CompanyName, 
-                customer.FirstName, 
-                customer.LastName, 
+                string[] row = new string[] {
+                customer.Id.ToString(),
+                customer.CompanyName,
+                customer.FirstName,
+                customer.LastName,
                 customer.EMail,
                 customer.PhoneNumber};
                 CustomerGridView.Rows.Add(row);
@@ -103,10 +98,8 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz...");
             }
-
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -118,7 +111,6 @@ namespace FormUI.Modules
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Tekrar deneyiniz...");
             }
         }
